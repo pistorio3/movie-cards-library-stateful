@@ -10,6 +10,7 @@ class Title extends React.Component {
         Título
         <input
           data-testid="title-input"
+          name="title"
           id="title-input"
           type="text"
           value={ title }
@@ -22,6 +23,7 @@ class Title extends React.Component {
 
 Title.propTypes = {
   title: PropTypes.string,
+  handleChange: PropTypes.func,
 }.isRequired;
 
 export default Title;

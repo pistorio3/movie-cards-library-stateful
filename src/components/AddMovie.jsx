@@ -5,20 +5,21 @@ import Title from './addmovie/Title';
 import Subtitle from './addmovie/Subtitle';
 import Image from './addmovie/Image';
 import Storyline from './addmovie/Storyline';
-
-const initState = {
-  subtitle: '',
-  title: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: 'action',
-};
+import Assessment from './addmovie/Assessment';
+import Gender from './addmovie/Gender';
 
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = initState;
+
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
   }
 
   handleChange = ({ target }) => {
@@ -30,9 +31,25 @@ class AddMovie extends React.Component {
     );
   }
 
-  render() {
-    // const { onClick } = this.props;
+  clearState = () => {
+    const { onClick } = this.props;
 
+    onClick(this.state);
+    this.initState();
+  }
+
+  initState() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
+  render() {
     return (
       <form data-testid="add-movie-form">
 
@@ -43,6 +60,18 @@ class AddMovie extends React.Component {
         <Image initState={ this.state } handleChange={ this.handleChange } />
 
         <Storyline initState={ this.state } handleChange={ this.handleChange } />
+
+        <Assessment initState={ this.state } handleChange={ this.handleChange } />
+
+        <Gender initState={ this.state } handleChange={ this.handleChange } />
+
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.clearState }
+        >
+          Adicionar filme
+        </button>
 
       </form>
     );

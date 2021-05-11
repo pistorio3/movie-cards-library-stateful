@@ -13,6 +13,7 @@ class SearchBar extends React.Component {
           Inclui o texto
           <input
             id="first-input"
+            name="searchText"
             type="text"
             data-testid="text-input"
             value={ searchText }
@@ -24,28 +25,28 @@ class SearchBar extends React.Component {
           Mostrar somente favoritos
           <input
             id="second-input"
+            name="bookmarkedOnly"
             type="checkbox"
             data-testid="checkbox-input"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
           />
         </label>
-
         <label data-testid="select-input-label" htmlFor="third-input">
           Filtrar por gênero
           <select
             id="third-input"
+            name="selectedGenre"
             type="select"
             data-testid="select-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
           >
-            <option data-testid="select-option" selected value="">Todos</option>
-            <option data-testid="select-option" value="action">Ação</option>
-            <option data-testid="select-option" value="comedy">Comédia</option>
-            <option data-testid="select-option" value="thriller">Suspense</option>
+            <option value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="thriller" data-testid="select-option">Suspense</option>
           </select>
-
         </label>
 
       </form>
